@@ -1,0 +1,11 @@
+<h2> Login Page </h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <label for="email-form"> Email </label>
+    <input id="email-form" type="email" formControlName="email" required>
+
+    <label for="password-form"> Password </label>
+    <input id="password-form" type="password" formControlName="password" required>
+
+    <input type="submit">
+</form>

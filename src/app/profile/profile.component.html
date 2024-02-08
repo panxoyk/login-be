@@ -1,0 +1,6 @@
+<h2> Profile Page </h2>
+
+<div *ngIf="getUser()">
+    <p> {{ getUser()?.email }} </p>
+    <button (click)="logout()"> Logout </button>
+</div>
