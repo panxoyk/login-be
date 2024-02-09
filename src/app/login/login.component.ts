@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../user';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    if(this.loginService.getUser()) this.router.navigate(['/home'])
+    if(this.authService.getUser()) this.router.navigate(['/home'])
   }
 
   login () {
     if(this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as User)?.subscribe(
+      this.authService.login(this.loginForm.value as User)?.subscribe(
         (data: any) => {
-          window.sessionStorage.setItem('session', JSON.stringify(data.session))
+          window.sessionStorage.setItem('session', data.session)
           this.router.navigate(['/profile'])
         }
       )
@@ -33,6 +33,6 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset()
   }
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
 }

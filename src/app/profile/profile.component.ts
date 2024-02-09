@@ -1,29 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
-  ngOnInit(): void {
-    if(!this.loginService.getUser()) this.router.navigate(['/login'])
+
+  profile: any = null;
+
+  ngOnInit() {
+    this.loadProfile()
   }
 
-  constructor(private loginService: LoginService, private router: Router) {}
-
-  getUser() {
-    return this.loginService.getUser();
+  loadProfile(): void {
+    this.profileService.getProfile()
+      .subscribe((data) => {
+        this.profile = data
+      })
   }
 
   logout() {
     window.sessionStorage.removeItem('session')
+    this.profile = null
     this.router.navigate(["/home"])
   }
+
+  constructor(private profileService: ProfileService, private router: Router) {}
 
 }
