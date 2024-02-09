@@ -1,5 +1,7 @@
 <h2> Login Page </h2>
 
+<a [routerLink]="['/home']"> Home </a>
+
 <form [formGroup]="loginForm" (ngSubmit)="login()">
     <label for="email-form"> Email </label>
     <input id="email-form" type="email" formControlName="email" required>
