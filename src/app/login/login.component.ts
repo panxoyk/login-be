@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { User } from '../user';
+import { User } from '../types';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,19 +12,20 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+
   loginForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   })
 
   ngOnInit(): void {
-    if(this.authService.getUser()) this.router.navigate(['/home'])
+    if(!!window.sessionStorage.getItem('session')) this.router.navigate(['/home'])
   }
 
   login () {
     if(this.loginForm.valid) {
-      this.authService.login(this.loginForm.value as User)?.subscribe(
-        (data: any) => {
+      this.loginService.login(this.loginForm.value as User)?.subscribe(
+        (data) => {
           window.sessionStorage.setItem('session', data.session)
           this.router.navigate(['/profile'])
         }
@@ -33,6 +34,6 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset()
   }
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {}
 
 }

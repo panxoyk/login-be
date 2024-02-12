@@ -1,6 +1,6 @@
 <h2> Home Page </h2>
 
-<div *ngIf="getUser(); else noUser">
+<div *ngIf="isLogged; else noUser">
     <a [routerLink]="['/profile']"> Profile </a>
 </div>
 

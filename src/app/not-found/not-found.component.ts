@@ -9,5 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './not-found.component.css'
 })
 export class NotFoundComponent {
+
   constructor() {}
+
 }

@@ -1,8 +1,6 @@
-import { ChangeDetectorRef, Component, OnChanges, OnInit } from '@angular/core';
-import { User } from '../user';
-import { CommonModule, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +10,9 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private authService: AuthService, private router: Router) {}
 
-  getUser() {
-    return this.authService.getUser();
-  }
+  isLogged: boolean = !!window.sessionStorage.getItem('session');
+
+  constructor() {}
 
 }

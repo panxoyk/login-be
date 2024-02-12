@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProfileService {
-  constructor(private http: HttpClient) {}
 
   getProfile() {
     const session = window.sessionStorage.getItem('session')
@@ -13,6 +12,8 @@ export class ProfileService {
         "Auth": JSON.stringify(session)
     } })
   }
+
+  constructor(private http: HttpClient) {}
 
 }
 
