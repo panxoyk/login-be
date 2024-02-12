@@ -24,12 +24,11 @@ export class LoginComponent implements OnInit {
 
   login () {
     if(this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as User)?.subscribe(
-        (data) => {
+      this.loginService.login(this.loginForm.value as User)
+        .subscribe((data) => {
           window.sessionStorage.setItem('session', data.session)
           this.router.navigate(['/profile'])
-        }
-      )
+        })
     }
     this.loginForm.reset()
   }
