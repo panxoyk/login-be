@@ -12,7 +12,7 @@ type LoginResponse = {
 export class LoginService {
 
   login(credentials: Credentials) {
-    return this.http.post<LoginResponse>('http://localhost:3000/login', null, { headers: {
+    return this.http.post<LoginResponse>('http://localhost:3000/auth/login', null, { headers: {
       "Login": JSON.stringify(credentials)
     } })
   }
