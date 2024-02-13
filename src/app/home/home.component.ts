@@ -14,5 +14,4 @@ export class HomeComponent {
   isLogged: boolean = !!window.sessionStorage.getItem('session');
 
   constructor() {}
-
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,13 @@ import { HttpClient } from '@angular/common/http';
 export class ProfileService {
 
   getProfile() {
-    const session = window.sessionStorage.getItem('session')
+    const session = this.authService.getToken()
     return this.http.get<ProfileResponse>('http://localhost:3000/profile', { headers: {
         "Auth": JSON.stringify(session)
     } })
   }
 
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private authService: AuthService) {}
 }
 
 type ProfileResponse = {

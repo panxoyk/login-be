@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { User } from '../types';
 import { HttpClient } from '@angular/common/http';
 
+type LoginResponse = {
+  session: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,9 +18,4 @@ export class LoginService {
   }
 
   constructor(private http: HttpClient) {}
-
-}
-
-type LoginResponse = {
-    session: string;
 }

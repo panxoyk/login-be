@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { ProfileService } from './profile.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -26,11 +27,14 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {
-    window.sessionStorage.removeItem('session')
+    this.authService.logout()
     this.profile = null
     this.router.navigate(["/home"])
   }
 
-  constructor(private profileService: ProfileService, private router: Router) {}
-
+  constructor(
+    private profileService: ProfileService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 }
