@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../types';
+import { Credentials } from './types';
 import { HttpClient } from '@angular/common/http';
 
 type LoginResponse = {
@@ -11,9 +11,9 @@ type LoginResponse = {
 })
 export class LoginService {
 
-  login(user: User) {
+  login(credentials: Credentials) {
     return this.http.post<LoginResponse>('http://localhost:3000/login', null, { headers: {
-      "Login": JSON.stringify(user)
+      "Login": JSON.stringify(credentials)
     } })
   }
 

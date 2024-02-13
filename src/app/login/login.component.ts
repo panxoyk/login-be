@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { User } from '../types';
+import { Credentials } from './types';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './login.service';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login () {
     if(this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as User)
+      this.loginService.login(this.loginForm.value as Credentials)
         .subscribe((data) => {
           this.authService.login(data.session)
           this.router.navigate(['/profile'])
