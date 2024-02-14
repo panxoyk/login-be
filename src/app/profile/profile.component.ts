@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { ProfileService } from './profile.service';
 import { AuthService } from '../auth/auth.service';
+import { Profile } from './types';
 
 @Component({
   selector: 'app-profile',
@@ -12,10 +13,9 @@ import { AuthService } from '../auth/auth.service';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
+  profile: Profile = null
 
-  profile: any = null;
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadProfile()
   }
 
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout()
     this.profile = null
     this.router.navigate(["/home"])

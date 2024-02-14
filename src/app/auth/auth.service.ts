@@ -5,23 +5,21 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-
-  login(session: string) {
+  login(session: string): void {
     window.sessionStorage.setItem('session', session)
   }
 
-  logout() {
+  logout(): void {
     window.sessionStorage.removeItem('session')
   }
 
   isLogged() {
-    return !!window.sessionStorage.getItem('session');
+    return !!window.sessionStorage.getItem('session')
   }
 
-  getToken() {
-    return window.sessionStorage.getItem('session');
+  getToken()  {
+    return window.sessionStorage.getItem('session')
   }
 
   constructor() {}
-
 }

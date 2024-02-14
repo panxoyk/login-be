@@ -1,6 +1,6 @@
 <h2> Home </h2>
 
-<nav *ngIf="isLogged; else noUser">
+<nav *ngIf="this.authService.isLogged(); else noUser">
     <a [routerLink]="['/profile']"> Profile </a>
 </nav>
 
