@@ -36,3 +36,10 @@ a {
 .button:disabled {
     cursor: auto;
 }
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: small;
+    text-align: center;
+}

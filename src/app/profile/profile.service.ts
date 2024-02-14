@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProfileResponse } from './types';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,4 @@ export class ProfileService {
   }
 
   constructor(private http: HttpClient) {}
-}
-
-type ProfileResponse = {
-    email: string;
 }
