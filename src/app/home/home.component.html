@@ -1,11 +1,13 @@
 <h2> Home Page </h2>
 
-<div *ngIf="isLogged; else noUser">
+<nav *ngIf="isLogged; else noUser">
     <a [routerLink]="['/profile']"> Profile </a>
-</div>
+</nav>
 
 <ng-template #noUser>
-    <a [routerLink]="['/login']"> Login </a>
+    <nav>
+        <a [routerLink]="['/login']"> Login </a>
+    </nav>
 </ng-template>
 
 

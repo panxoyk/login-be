@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: max-content;
+    margin: 32px 0;
+}
+
+.input-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.input-form input {
+    padding: 4px;
+}
+
+.login-button {
+    align-items: center;
+    width: 100%;
+}

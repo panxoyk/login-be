@@ -4,6 +4,7 @@ import { Credentials } from './types';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './login.service';
 import { AuthService } from '../auth/auth.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,14 +25,17 @@ export class LoginComponent implements OnInit {
   }
 
   login () {
-    if(this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as Credentials)
-        .subscribe((data) => {
-          this.authService.login(data.session)
-          this.router.navigate(['/profile'])
-        })
-    }
-    this.loginForm.reset()
+    this.loginService.token(this.loginForm.value.email as string)
+      .pipe(
+        finalize(() => this.loginForm.reset())
+      )
+      .subscribe((tokenRes) => {
+        this.loginService.login(this.loginForm.value as Credentials, tokenRes.token)
+          .subscribe((loginRes) => {
+            this.authService.login(loginRes.session)
+            this.router.navigate(['/profile'])
+          })
+      })
   }
 
   constructor(

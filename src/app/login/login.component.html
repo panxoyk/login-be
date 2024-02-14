@@ -1,13 +1,18 @@
 <h2> Login Page </h2>
 
-<a [routerLink]="['/home']"> Home </a>
+<nav class="nav">
+    <a [routerLink]="['/home']"> Home </a>
+</nav>
+
 
 <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <label for="email-form"> Email </label>
-    <input id="email-form" type="email" formControlName="email" required>
-
-    <label for="password-form"> Password </label>
-    <input id="password-form" type="password" formControlName="password" required>
-
-    <input type="submit">
+    <div class="input-form">
+        <label for="email-form"> Email </label>
+        <input id="email-form" type="email" formControlName="email" maxlength="50" required>
+    </div>
+    <div class="input-form">
+        <label for="password-form"> Password </label>
+        <input id="password-form" type="password" formControlName="password" maxlength="20" required>
+    </div>
+    <input type="submit" [disabled]="loginForm.invalid" class="button login-button">
 </form>

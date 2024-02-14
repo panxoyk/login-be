@@ -1,11 +1,16 @@
 <h2> Profile Page </h2>
 
-<a [routerLink]="['/home']"> Home </a>
-<div *ngIf="profile; else noProfile">
+<nav>
+    <a [routerLink]="['/home']"> Home </a>
+</nav>
+
+<div *ngIf="profile; else noProfile" class="profile-content">
     <p> {{ profile.email }} </p>
-    <button (click)="logout()"> Logout </button>
+    <button (click)="logout()" class="button"> Logout </button>
 </div>
 
 <ng-template #noProfile>
-    <p> Permiso denegado. </p>
+    <div class="profile-content">
+        <p> Permiso denegado. </p>
+    </div>
 </ng-template>
