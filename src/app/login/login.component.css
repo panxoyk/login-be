@@ -3,7 +3,7 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
     width: max-content;
     margin: 32px 0;
 }

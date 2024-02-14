@@ -4,7 +4,6 @@ import { Credentials } from './types';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './login.service';
 import { AuthService } from '../auth/auth.service';
-import { finalize } from 'rxjs';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -28,9 +27,6 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.loginService.token(this.loginForm.value.email as string)
-      .pipe(
-        finalize(() => this.loginForm.reset())
-      )
       .subscribe({
         next: (tokenRes) => {
           this.loginService.login(this.loginForm.value as Credentials, tokenRes.token)
@@ -39,11 +35,18 @@ export class LoginComponent implements OnInit {
                 this.authService.login(loginRes.session)
                 this.router.navigate(['/profile'])
               },
-              error: () => {
-                this.errorMessage = 'Invalid email or password'
+              error: (error) => {
+                console.log('LOGIN ERROR:', error.message)
+                this.errorMessage = error.message
                 setTimeout(() => this.errorMessage = '', 3000)
               }
             })
+        },
+        error: (error) => {
+          console.log('TOKEN ERROR:', error.message)
+        },
+        complete: () => {
+          this.loginForm.reset()
         }
       })
   }

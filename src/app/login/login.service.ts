@@ -21,7 +21,6 @@ export class LoginService {
       .pipe(catchError(
         (error: HttpErrorResponse) => {
           const message = error.error.message
-          console.log('Error:', message)
           throw new Error(message)
         }
       ))
