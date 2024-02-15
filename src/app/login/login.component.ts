@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Credentials } from './types';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { AuthService } from '../auth/auth.service';
 import { NgIf } from '@angular/common';
@@ -9,7 +9,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, NgIf],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    if(this.authService.isLogged()) this.router.navigate(['/home'])
+    if(this.authService.isLogged()) this.router.navigate(['/profile'])
   }
 
   login(): void {

@@ -1,20 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.container {
     margin: 64px auto;
-    max-width: fit-content;
+    max-width: max-content;
 }
 
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 64px;
+    padding: 16px 64px;
+    border-bottom: 1px solid black;
 }
 
 h2 {
     text-align: center;
+    margin: 64px 0;
 }
 
 p {

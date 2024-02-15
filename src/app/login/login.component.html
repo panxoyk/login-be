@@ -1,20 +1,17 @@
-<h2> Login </h2>
+<h2> Login page </h2>
 
-<nav class="nav">
-    <a [routerLink]="['/home']"> Home </a>
-</nav>
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="input-form">
+            <label for="email-form"> Email </label>
+            <input id="email-form" type="email" formControlName="email" maxlength="50" required>
+        </div>
+        <div class="input-form">
+            <label for="password-form"> Password </label>
+            <input id="password-form" type="password" formControlName="password" maxlength="20" required>
+        </div>
+        <input type="submit" [disabled]="loginForm.invalid" value="Continue" class="button login-button">
+    </form>
 
-
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div class="input-form">
-        <label for="email-form"> Email </label>
-        <input id="email-form" type="email" formControlName="email" maxlength="50" required>
-    </div>
-    <div class="input-form">
-        <label for="password-form"> Password </label>
-        <input id="password-form" type="password" formControlName="password" maxlength="20" required>
-    </div>
-    <input type="submit" [disabled]="loginForm.invalid" value="Continue" class="button login-button">
-</form>
-
-<p *ngIf="errorMessage" class="error-message"> {{ errorMessage }} </p>
+    <p *ngIf="errorMessage" class="error-message"> {{ errorMessage }} </p>
+</div>

@@ -1,12 +1,12 @@
-<h2> Profile </h2>
+<h2> Profile page </h2>
 
-<nav>
-    <a [routerLink]="['/home']"> Home </a>
-</nav>
-
-<div *ngIf="profile; else noProfile" class="profile-content">
-    <p> {{ profile.email }} </p>
-    <button (click)="logout()" class="button"> Log out </button>
+<div class="container">
+    <div *ngIf="profile; else noProfile" class="profile-content">
+        <p> <span class="profile-email"> Email </span> {{ profile.email }} </p>
+        <div class="button-container">
+            <button (click)="logout()" class="button"> Log out </button>
+        </div>
+    </div>
 </div>
 
 <ng-template #noProfile>

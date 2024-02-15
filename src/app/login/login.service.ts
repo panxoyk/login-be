@@ -16,7 +16,7 @@ export class LoginService {
   login(credentials: Credentials, token: string): Observable<LoginResponse> {
     return this.http
       .post<LoginResponse>(`${this.url}/auth/login`, credentials, {
-        headers: { 'Token': token }
+        headers: { 'Token': `Bearer ${token}` }
       })
       .pipe(catchError(
         (error: HttpErrorResponse) => {
