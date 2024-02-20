@@ -1,5 +1,5 @@
 export type ProfileResponse = {
-    email: string;
+  email: string;
 }
 
 export type Profile = ProfileResponse | null

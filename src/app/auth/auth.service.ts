@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +16,9 @@ export class AuthService {
     return !!window.sessionStorage.getItem('session')
   }
 
-  getToken()  {
+  getToken() {
     return window.sessionStorage.getItem('session')
   }
 
-  constructor() {}
+  constructor() { }
 }

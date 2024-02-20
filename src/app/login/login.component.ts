@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    if(this.authService.isLogged()) this.router.navigate(['/profile'])
+    if (this.authService.isLogged()) this.router.navigate(['/profile'])
   }
 
   login(): void {
@@ -56,5 +56,5 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 }

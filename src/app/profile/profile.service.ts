@@ -13,5 +13,5 @@ export class ProfileService {
     return this.http.get<ProfileResponse>(`${this.url}/profile`)
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 }

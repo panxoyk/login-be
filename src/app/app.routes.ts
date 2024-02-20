@@ -5,8 +5,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
-    { path: '**', component: NotFoundComponent },
-];
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+  { path: '**', component: NotFoundComponent },
+]

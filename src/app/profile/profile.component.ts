@@ -41,5 +41,5 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 }

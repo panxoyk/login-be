@@ -26,5 +26,5 @@ export class LoginService {
       ))
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 }
