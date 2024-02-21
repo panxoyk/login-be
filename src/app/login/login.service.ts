@@ -9,8 +9,8 @@ import { Observable, catchError } from 'rxjs';
 export class LoginService {
   private url: string = 'http://localhost:3000'
 
-  token(email: string): Observable<TokenResponse> {
-    return this.http.post<TokenResponse>(`${this.url}/auth/token`, { email })
+  access(email: string): Observable<TokenResponse> {
+    return this.http.post<TokenResponse>(`${this.url}/auth/access`, { email })
   }
 
   login(credentials: Credentials, token: string): Observable<LoginResponse> {

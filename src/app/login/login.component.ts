@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JSEncrypt } from 'jsencrypt'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Credentials } from './types';
 import { Router } from '@angular/router';
@@ -26,13 +27,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.loginService.token(this.loginForm.value.email as string)
+    this.loginService.access(this.loginForm.value.email)
       .subscribe({
-        next: (tokenRes) => {
-          this.loginService.login(this.loginForm.value as Credentials, tokenRes.token)
+        next: ({ token, key }) => {
+          const email = this.loginForm.value.email
+          const encrypt = new JSEncrypt()
+          encrypt.setPublicKey(key)
+          const password = encrypt.encrypt(this.loginForm.value.password)
+          this.loginService.login({ email, password } as Credentials, token)
             .subscribe({
-              next: (loginRes) => {
-                this.authService.login(loginRes.session)
+              next: ({ session }) => {
+                this.authService.login(session)
                 this.router.navigate(['/profile'])
               },
               error: (error) => {

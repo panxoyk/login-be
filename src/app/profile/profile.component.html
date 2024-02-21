@@ -1,16 +1,10 @@
 <h2> Profile page </h2>
 
 <div class="container">
-  <div *ngIf="profile; else noProfile" class="profile-content">
+  <div *ngIf="profile" class="profile-content">
     <p> <span class="profile-email"> Email </span> {{ profile.email }} </p>
     <div class="button-container">
       <button (click)="logout()" class="button"> Log out </button>
     </div>
   </div>
 </div>
-
-<ng-template #noProfile>
-  <div class="profile-content">
-    <p> Don't have the permissions. </p>
-  </div>
-</ng-template>

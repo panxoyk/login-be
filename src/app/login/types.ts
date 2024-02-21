@@ -9,4 +9,5 @@ export type LoginResponse = {
 
 export type TokenResponse = {
   token: string;
+  key: string;
 }
