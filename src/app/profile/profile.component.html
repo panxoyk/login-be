@@ -2,7 +2,8 @@
 
 <div class="container">
   <div *ngIf="profile" class="profile-content">
-    <p> <span class="profile-email"> Email </span> {{ profile.email }} </p>
+    <p> <span class="profile-info"> Name </span> {{ profile.name }} </p>
+    <p> <span class="profile-info"> Email </span> {{ profile.email }} </p>
     <div class="button-container">
       <button (click)="logout()" class="button"> Log out </button>
     </div>

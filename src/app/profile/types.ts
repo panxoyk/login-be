@@ -1,4 +1,5 @@
 export type ProfileResponse = {
+  name: string;
   email: string;
 }
 
